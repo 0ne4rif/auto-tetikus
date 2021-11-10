@@ -24,10 +24,18 @@ while True:
     (X,Y) = pyautogui.position(x/2,y/2)
     # offsetting by radius 
     pyautogui.moveTo(X+R,Y)
+    #mouse move in circle
+    for i in range(360):
+        # setting pace with a modulus 
+        if i%6==0:
+            pyautogui.moveTo(X+R*math.cos(math.radians(i)),Y+R*math.sin(math.radians(i)))
+            
     pyautogui.click(button='left')
+    time.sleep(1)
+    
     print('[',idx,'] In progress',animation[idx % len(animation)], end="\r")
     idx += 1
-    time.sleep(0.1)
+    
 
     
 
