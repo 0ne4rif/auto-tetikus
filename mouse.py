@@ -1,9 +1,20 @@
 import pyautogui
 import math
 import time
+from datetime import datetime
 
-time.sleep(5)
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
 
+print('[*] Task initiated at', current_time)
+print('[*] Loading script...')
+print('[*] Running script...')
+print('[*] Slicing cheese...')
+print('[*] Feeding the rats...')
+print('[*] Training the rats...')
+time.sleep(3)
+animation = "|/-\\"
+idx = 0
 while True:
     # Radius 
     R = 400
@@ -13,19 +24,13 @@ while True:
     (X,Y) = pyautogui.position(x/2,y/2)
     # offsetting by radius 
     pyautogui.moveTo(X+R,Y)
-
-    for i in range(360):
-        # setting pace with a modulus 
-        if i%6==0:
-            pyautogui.moveTo(X+R*math.cos(math.radians(i)),Y+R*math.sin(math.radians(i)))
-    
-    time.sleep(1)
-
     pyautogui.click(button='left')
+    print('[',idx,'] In progress',animation[idx % len(animation)], end="\r")
+    idx += 1
+    time.sleep(0.1)
 
     
 
 
 
   
-
